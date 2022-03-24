@@ -1,7 +1,7 @@
 module.exports = {
   env: { browser: true, es6: true, node: true },
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '2020',
     ecmaFeatures: {
       jsx: true,
     },
@@ -13,7 +13,7 @@ module.exports = {
     'airbnb-base',
   ],
   parser : 'babel-eslint',
-  plugins: ['react', 'import', 'react-hooks'],
+  plugins: ['react'],
   rules: {
     'no-param-reassign': ['error', { props: false }],
     indent: 0,
