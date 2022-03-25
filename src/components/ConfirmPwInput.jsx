@@ -1,20 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import { BlankInput } from './styles';
+import { UseContext } from '../context/index';
 
 function ConfirmPwInput() {
   
-  const [ confirmPw, setConfirmPw ] = useState('');
-  const [ error, setError ] = useState('');
-  const onChange = (e) => {
-    const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-    if (!reg.test(e.target.value)) {
-      setError('비밀번호 형식에 맞지 않습니다.');
-    } else {
-      setError('');
-    }
-    return setConfirmPw(e.target.value);
-  }
+  const { confirmPw, onChangeConfirmPw, confirmError } = useContext(UseContext);
 
   return (
     <BlankInput>
@@ -23,9 +14,9 @@ function ConfirmPwInput() {
         type='password' 
         placeholder='비밀번호를 한번 더 입력해주세요.' 
         value={confirmPw}
-        onChange={onChange}
+        onChange={onChangeConfirmPw}
       />
-      <p className='alert'>{error}</p>
+      <p className='alert'>{confirmError}</p>
     </BlankInput>
   )
 }

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { UserDispatch } from '../components/NameInput';
+// import { UseContext } from '../context/index';
 
 const DoneInput = styled.input`
   width: 100%;
@@ -16,14 +16,10 @@ const DoneInput = styled.input`
 `
 
 function SubmitButton() {
-
-  const context = useContext(UserDispatch);
-  const userName = context;
-
+  // const { name, email, pw, confirmPw, phone } = useContext(UseContext);
   return (
     <>
     <DoneInput type='button' value='확인' />
-    {userName}
     </>
   )
 }

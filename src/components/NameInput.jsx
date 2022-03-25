@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import { BlankInput } from './styles';
-
-export const UserDispatch = React.createContext('');
+import { UseContext } from '../context/index';
 
 function NameInput() {
 
-  const [userName, setUserName] = useState('');
-  const [ error, setError ] = useState('');
-  const onChange = (e) => {
-    const regName = /^[가-힣]+$/;
-    if(!regName.test(e.target.value)) {
-      setError('성함은 한글로 입력해주세요.')
-    }else(
-      setError('')
-    )
-    setUserName(e.target.value);
-  }
-  
+  const {name , onChangeName, nameError } = useContext(UseContext);
 
   return(
-    <UserDispatch.Provider value={userName}>
+    
       <BlankInput>
         <p className='thead'>이름</p>
         <input
           type='text' 
           placeholder='성함을 입력해주세요.' 
           name="username"
-          value={userName}
-          onChange={onChange}
+          value={name}
+          onChange={onChangeName}
         />
-        <p className='alert'>{error}</p>
+        <p className='alert'>{nameError}</p>
       </BlankInput>
-    </UserDispatch.Provider>
+    
   )
 }
 

@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import { BlankInput } from './styles';
+import { UseContext } from '../context/index';
 
 function PwInput() {
-  const [ password, setPassword ] = useState('');
-  const [ error, setError ] = useState('');
-  const onChange = (e) => {
-    const reg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
-    
-    if (!reg.test(e.target.value)) {
-      setError('비밀번호 형식과 일치하지 않습니다.');
-    } else {
-      setError('');
-    }
-    return setPassword(e.target.value);
-  }
+  const { pw, onChangePw, pwError } = useContext(UseContext);
+
   return (
     <BlankInput>
       <p className='thead'>비밀번호</p>
       <input 
         type='password' 
         placeholder='비밀번호를 입력해주세요.' 
-        value={password}
-        onChange={onChange}
+        value={pw}
+        onChange={onChangePw}
       />
-      <p className='alert'>{error}</p>
+      <p className='alert'>{pwError}</p>
     </BlankInput>
   )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CommonProvider from '../components/Provider';
+
 import NameInput from '../components/NameInput';
 import EmailInput from '../components/EmailInput';
 import PwInput from '../components/PwInput';
@@ -23,7 +25,8 @@ const InfoForm = styled.form`
 
 function Form() {
   return(
-    <InfoForm>
+    <CommonProvider>
+      <InfoForm>
       <h1>회원 정보 입력 폼</h1>
       <NameInput />
       <EmailInput />
@@ -31,7 +34,8 @@ function Form() {
       <ConfirmPwInput />
       <PhoneInput />
       <SubmitButton />
-    </InfoForm>
+      </InfoForm>
+    </CommonProvider>
   )
 }
 export default Form;
