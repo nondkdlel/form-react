@@ -17,3 +17,8 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
+.alert {
+  color: tomato;
+  font-size: 14px;
+  padding-top: 7px;
+}
